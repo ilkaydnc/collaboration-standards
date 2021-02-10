@@ -1,4 +1,5 @@
 <h1 align="center">Ortak Çalışma Standardizasyonu</h1>
+
 >_Bu yazı, farklı kaynaklardaki yazıların birleştirilmiş, Türkçeleştirilmiş ve özet niteliği taşıyan bir versiyonudur. Bahsedilen konular hakkında daha detaylı bilgiye yazı sonundaki kaynak bağlantılarından ulaşabilirsiniz._
 
 ## Git Flow

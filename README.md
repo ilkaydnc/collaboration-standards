@@ -14,7 +14,7 @@ Bu branch'te projeye eklenecek olan yeni bir özelliğin geliştirmesi yapılır
   <img width="600" src="https://wac-cdn.atlassian.com/dam/jcr:b5259cce-6245-49f2-b89b-9871f9ee3fa4/03%20(2).svg?cdnVersion=1393" />
 </p>
 
-### Yeni bir `feature` branch'i oluşturmak
+### Yeni bir feature branch'i oluşturmak
 `git-flow` eklentisi olmadan:
 ```bash
 	git checkout develop  
@@ -25,7 +25,7 @@ Bu branch'te projeye eklenecek olan yeni bir özelliğin geliştirmesi yapılır
 	git flow feature start feature_branch
 ```
 
-###  `feature` branch'ini tamamlamak
+### feature branch'ini tamamlamak
 `git-flow` eklentisi olmadan:
 ```bash
 	git checkout develop  
@@ -45,7 +45,7 @@ Bu branch'te projeye eklenecek olan yeni bir özelliğin geliştirmesi yapılır
   <img width="600" src="https://wac-cdn.atlassian.com/dam/jcr:a9cea7b7-23c3-41a7-a4e0-affa053d9ea7/04%20(1).svg?cdnVersion=1449" />
 </p>
 
-### Yeni bir `release` branch'i oluşturmak
+### Yeni bir release branch'i oluşturmak
 `git-flow` eklentisi olmadan:
 ```bash
 	git checkout develop  
@@ -56,7 +56,7 @@ Bu branch'te projeye eklenecek olan yeni bir özelliğin geliştirmesi yapılır
 	git flow release start 0.1.0
 	# Output: "Switched to  a  new branch 'release/0.1.0'"
 ```
-###  `release` branch'ini tamamlamak
+### release branch'ini tamamlamak
 ```bash
 	git checkout master  
 	git flow release finish '0.1.0'
@@ -75,7 +75,7 @@ Bakım veya `hotfix` branch'leri yayındaki bir sürümdeki hataları hızlıca 
   <img width="600" src="https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%20(2).svg?cdnVersion=1449" />
 </p>
 
-### Yeni bir `hotfix` branch'i oluşturmak
+### Yeni bir hotfix branch'i oluşturmak
 `git-flow` eklentisi olmadan:
 ```bash
 	git checkout master
@@ -85,7 +85,7 @@ Bakım veya `hotfix` branch'leri yayındaki bir sürümdeki hataları hızlıca 
 ```bash
 	git flow hotfix start hotfix_branch
 ```
-###  `hotfix` branch'ini tamamlamak
+### hotfix branch'ini tamamlamak
 ```bash
 	git checkout master
 	git merge hotfix_branch

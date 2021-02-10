@@ -37,7 +37,7 @@ Bu branch'te projeye eklenecek olan yeni bir özelliğin geliştirmesi yapılır
 ```
 
 ## Release Branches
-`develop` branch'imiz yeteri kadar özelliğe sahip olduğunda veya önceden belirlenmiş bir yayın tarihi varsa `develop` branch'inden bir `release` branch'i ayırmak gerekir. Bu branch'in oluşturulması bir sonraki sürüm döngüsünü başlatır. Bu noktadan sonra bu branch'e artık yeni bir özellik eklenemez. Yalnızca bug-fix, dökümanyasyon oluşturma veya bu yayınla alakalı maddeler eklenebilir. `release` branch'i hazır olduğunda `master` branch'ine gönderilir. Ek olarak `release` içerisindeki son değişikler tekrar'dan `develop` branch'ine gönderilmelidir.
+`develop` branch'imiz yeteri kadar özelliğe sahip olduğunda veya önceden belirlenmiş bir yayın tarihi varsa `develop` branch'inden bir `release` branch'i ayırmak gerekir. Bu branch'in oluşturulması bir sonraki sürüm döngüsünü başlatır. Bu noktadan sonra bu branch'e artık yeni bir özellik eklenemez. Yalnızca bug-fix, dökümanyasyon oluşturma veya bu sürümle alakalı işler eklenebilir. `release` branch'i hazır olduğunda `master` branch'ine gönderilir. Ek olarak `release` içerisindeki son değişikler tekrar'dan `develop` branch'ine gönderilmelidir.
 
 `release`'ler için ayrı bir branch kullanmak, bir takım `release` branch'inde düzenlemeler yaparken diğer takımların bir sonraki sürüm için yeni özellikler geliştirebilmesine olanak sağlar.
 

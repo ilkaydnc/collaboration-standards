@@ -135,13 +135,13 @@ Eğer iyi bir Git `commit`'inin neyin oluşturduğu hakkında fazla düşünmedi
 Ama iyi bakılmış bir geçmiş güzel ve faydalı bir şeydir. `git blame`, `revert`, `rebase`, `log`, `shortlog` ve buna benzer komutları hayatımıza sokar. Başkalarının `commit`'lerini veya `pull request`'lerini `review` yapmaya değer ve bağımsız halde yapmaya değer hale gelir.
 
 ### Harika bir Git `commit`'inin 7 kuralı
-1.  [Konu satırını ve içerik kısmını boş bir satır ile ayırmak](#separate)
+1.  [Konu satırını ve açıklama kısmını boş bir satır ile ayırmak](#separate)
 2.  [Konu satırını 50 karakter ile sınırlandırmak](#limit-50)
 3.  [Konu satırına büyük harf ile başlamak](#capitalize)
 4.  [Konu satırını nokta ile bitirmemek](#end)
 5.  [Konu satırında `imperative mood` kullanmak](#imperative)
 6.  [İçerik kısmında her satırı 72 karakter ile sınırlandırmak](#wrap-72)
-7.  [_Ne_, _neden_ ve _nasıl_ gibi soruları içerik kısmında açıklamak](#why-not-how)
+7.  [_Ne_, _neden_ ve _nasıl_ gibi soruları açıklama kısmında açıklamak](#why-not-how)
 
 Örnek olarak:
 ```
@@ -169,6 +169,171 @@ Resolves: #123
 See also: #456, #789
 ```
 
+### 1. Konu satırını ve açıklama kısmını boş bir satır ile ayırmak
+
+`git commit` [kılavuz](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-commit.html#_discussion) sayfasından:
+
+>Gerekli olmasa da, `commit` mesajına değişikliği özetleyen tek bir kısa satır (50 karakterden az), ardından boş bir satır ve ardından daha kapsamlı bir açıklama ile başlamak iyi bir fikirdir. Bir `commit` mesajında ilk boş satıra kadar olan metin `commit` başlığı olarak kabul edilir ve bu başlık Git'te kullanılır.
+
+Öncelikle, her `commit` açıklamaya ihtiyaç duymayabilir. Bazen tek bir satır yeterlidir. Örneğin:
+```
+Fix typo in introduction to user guide
+```
+
+Git geçmişini okuyan birisi yazım hatasının nerede olduğunu merak ederse, değişimin ne olduğuna kolaylıklı bakabilir. Örnek olarak: `git show` veya `git diff` veya `git log -p`.
+
+Bununla birlikte, bir `commit`'in açıklamaya ihtiyacı olduğunda `-m` seçeneğiyle yazmak o kadar kolay değildir. Bu noktada Git GUI kullanmak mantıklıdır. Komut satırına `git gui` yazarak Git ile beraber gelen GUI'yi kullanabilirsiniz veya üçüncü parti yazılımlar kullanmak da mümkündür.
+
+```
+Derezz the master control program
+
+MCP turned out to be evil and had become intent on world domination.
+This commit throws Tron's disc into MCP (causing its deresolution)
+and turns it back into a chess game.
+```
+
+Bu durumda konu satırının açıklamadan ayrılması, geçmişe göz atarken iş yarıyor. Tam geçmiş şu şekilde:
+```
+$ git log
+commit 42e769bdf4894310333942ffc5a15151222a87be
+Author: Kevin Flynn <kevin@flynnsarcade.com>
+Date:   Fri Jan 01 00:00:00 1982 -0200
+
+ Derezz the master control program
+
+ MCP turned out to be evil and had become intent on world domination.
+ This commit throws Tron's disc into MCP (causing its deresolution)
+ and turns it back into a chess game.
+```
+
+### 2. Limit the subject line to 50 characters
+50 karakter kesin bir sınır değildir, sadece bir kuraldır. Konu satırlarının bu uzunlukta tutulması, okunabilir olmalarını sağlar ve yazarı, neler olduğunu açıklamanın en kısa yolu hakkında bir an düşünmeye zorlar.
+
+> Eğer 50 karakterden az yazma konusunda zorlanıyorsanız, aynı anda çok fazla değişiklik yapıyor olabilirsiniz. Atomic `commit`'ler konusunda çaba göstermeniz gerekir.
+
+GitHub'ın UI'yı bu kuralların tamamen farkındadır ve 50 karakter sınırını aşarsanız sizi uyarır:
+
+![enter image description here](https://i.imgur.com/zyBU2l6.png)
+
+Ve 72 karakterden uzun olan konu satırlarını 3 nokta ile keser:
+
+![enter image description here](https://i.imgur.com/27n9O8y.png)
+Sonuç olarak, 50 karakter sınırı için çabalayın ama 72 karakter sınırını kesin olarak aşmamanız gerekir.
+
+### 3. Konu satırına büyük harf ile başlamak
+Başlıktan da anlaşılacaği gibi gayet bir maddedir. Tüm konu satırlarına büyük harf kullanarak başlayın.
+
+Örnek olarak:
+- Accelerate to 88 miles per hour
+
+Bunun yerine yukarıdaki örnekteki gibi yazmak daha iyidir.
+- ~~accelerate to 88 miles per hour~~
+
+### 4. Konu satırını nokta ile bitirmemek
+Konu satırlarının sonundaki noktalama işaretleri gereksizdir. Ayrıca, 50 karakter sınırını korumaya çalışırken her harf bizim için değerlidir.
+
+Örnek olarak:
+- Open the pod bay doors
+
+Bunun yerine yukarıdaki örnekteki gibi yazmak daha iyidir.
+- ~~Open the pod bay doors.~~
+
+### 5. Konu satırında `imperative mood` kullanmak
+`imperative mood`, sözlü veya yazılı bir komut veya talimat verme anlamına gelir. Birkaç örnek:
+-   Clean your room
+-   Close the door
+-   Take out the trash
+
+Bu yazıdaki 7 kuralın her biri `imperative mood` kullanarak yazılmıştır. Örnek olarak: "Wrap the body at 72 characters".
+
+`imperative mood` kaba gelebilir. Bu yüzden bunu hayatımızda kullanmamaya dikkat ediyoruz. Ama Git `commit`'leri için mükemmeldir. Bunun sebebi de **Git'in kendisi, sizin için bir `commit` oluşturduğunda `imperative mood` kullanır.**
+
+Örnek olarak, `git merge` kullanılırken oluşturulan varsayılan mesaj şu şekildedir:
+```
+Merge branch 'myfeature'
+```
+Ve `git revert` kullandığınızda:
+
+```
+Revert "Add the thing with the stuff"
+
+This reverts commit cc87791524aedd593cff5a74532befe7ab69ce9d.
+```
+Veya GitHub pull request'inde "Merge" button'una tıkladığınızda:
+```
+Merge pull request #123 from someuser/somebranch
+```
+Bu nedenle `commit` mesajlarınızı `imperative mood`'da yazdığınızda, Git'in kendi yerleşik kurallarını uygulamış olursunuz.
+
+-   Refactor subsystem X for readability
+-   Update getting started documentation
+-   Remove deprecated methods
+-   Release version 1.0.0
+
+Bu şekilde yazmak ilk başlarda biraz tuhaf gelebilir. `indicative mood`'ta konuşmaya daha alışkınız. Bu nedenle `commit` mesajlarını şu şekilde okunur:
+
+- ~~Fixed bug with Y~~
+- ~~Changing behavior of X~~
+
+Ve bazen `commit`'ler içeriğinin açıklaması şeklinde yazılır:
+
+- ~~More fixes for broken stuff~~
+- ~~Sweet new API methods~~
+
+Doğru yazıp yazmama karışıklığını engellemek için, her zaman işe yarayan aşağıdaki gibi bir kural vardır.
+
+**Uygun şekilde oluşturulmuş bir `commit` mesajı her zaman aşağıdaki cümleyi tamamlayabilmelidir.**:
+
+- If applied, this commit will  **_your subject line here_**
+
+Örnek olarak:
+
+-   If applied, this commit will **_refactor subsystem X for readability_**
+-   If applied, this commit will **_update getting started documentation_**
+-   If applied, this commit will **_remove deprecated methods_**
+-   If applied, this commit will **_release version 1.0.0_**
+-   If applied, this commit will **_merge pull request #123 from user/branch_**
+
+`imperative mood` kullanılmadığı durumlarda yazılan konu satırlarının neden doğru olmadığına bakalım:
+
+-   If applied, this commit will ~~**_fixed bug with Y_**~~
+-   If applied, this commit will ~~**_changing behavior of X_**~~
+-   If applied, this commit will ~~**_more fixes for broken stuff_**~~
+-   If applied, this commit will ~~**_sweet new API methods_**~~
+
+>`imperative mood` kullanımı sadece konu satırlarında önemlidir. Açıklama kısmını yazarken bu kısıtlamaya ihtiyaç olmaz.
+
+### 6. İçerik kısmında her satırı 72 karakter ile sınırlandırmak
+Git yazıları otomatik olarak yeni satıra geçirmez. Bir `commit` mesajının açıklamasını yazarken onun sağ kenar boşluğuna dikkat etmeli ve metni kendiniz alt satıra geçirmelisiniz.
+
+### 7. _Ne_, _neden_ ve _nasıl_ gibi soruları açıklama kısmında açıklamak
+[Bitcoin Core'un bu `commit`'i](https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6), neyin neden değiştiğini açıklama konusunda mükemmel bir örnektir.
+```
+commit eb0b56b19017ab5c16c745e6da39c53126924ed6
+Author: Pieter Wuille <pieter.wuille@gmail.com>
+Date:   Fri Aug 1 22:57:55 2014 +0200
+
+   Simplify serialize.h's exception handling
+
+   Remove the 'state' and 'exceptmask' from serialize.h's stream
+   implementations, as well as related methods.
+
+   As exceptmask always included 'failbit', and setstate was always
+   called with bits = failbit, all it did was immediately raise an
+   exception. Get rid of those variables, and replace the setstate
+   with direct exception throwing (which also removes some dead
+   code).
+
+   As a result, good() is never reached after a failure (there are
+   only 2 calls, one of which is in tests), and can just be replaced
+   by !eof().
+
+   fail(), clear(n) and exceptions() are just never called. Delete
+   them.
+```
+[Tüm değişikliklere](https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6) göz atın ve `commit` yazarının bu değişikliği burada ve şimdi açıklayarak, gelecekteki `commit` atacak olanlara kazandırdığı zamanı düşünün.
+
+Çoğu durumda, bir değişikliğin nasıl yapıldığına dair ayrıntıları atlayabilirsiniz. Kod bu bakımdan genellikle kendini açıklar niteliktedir. Eğer kod fazla karmaşıksa ve açıklanması gerekiyorsa, açıklama kısmı bunun içindir. En başta neden değişiklik yaptığınızı, yani değişiklikten önce işlerin nasıl yürüdüğünü (ve bunda neyin yanlış olduğunu), şimdi çalışma şeklini ve neden bu şekilde çözmeye karar verdiğinizi netleştirmeye odaklanın
 
 ## Kaynaklar
 * **Git Flow** (Makale ve Görseller): [https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)

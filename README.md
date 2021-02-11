@@ -135,13 +135,13 @@ Eğer iyi bir Git `commit`'inin neyin oluşturduğu hakkında fazla düşünmedi
 Ama iyi bakılmış bir geçmiş güzel ve faydalı bir şeydir. `git blame`, `revert`, `rebase`, `log`, `shortlog` ve buna benzer komutları hayatımıza sokar. Başkalarının `commit`'lerini veya `pull request`'lerini `review` yapmaya değer ve bağımsız halde yapmaya değer hale gelir.
 
 ### Harika bir Git `commit`'inin 7 kuralı
-1.  [Konu satırını ve açıklama kısmını boş bir satır ile ayırmak](#separate)
-2.  [Konu satırını 50 karakter ile sınırlandırmak](#limit-50)
-3.  [Konu satırına büyük harf ile başlamak](#capitalize)
-4.  [Konu satırını nokta ile bitirmemek](#end)
-5.  [Konu satırında `imperative mood` kullanmak](#imperative)
-6.  [İçerik kısmında her satırı 72 karakter ile sınırlandırmak](#wrap-72)
-7.  [_Ne_, _neden_ ve _nasıl_ gibi soruları açıklama kısmında açıklamak](#why-not-how)
+1.  [Konu satırını ve açıklama kısmını boş bir satır ile ayırmak](#1-konu-satırını-ve-açıklama-kısmını-boş-bir-satır-ile-ayırmak)
+2.  [Konu satırını 50 karakter ile sınırlandırmak](#2-limit-the-subject-line-to-50-characters)
+3.  [Konu satırına büyük harf ile başlamak](#3-konu-satırına-büyük-harf-ile-başlamak)
+4.  [Konu satırını nokta ile bitirmemek](#4-konu-satırını-nokta-ile-bitirmemek)
+5.  [Konu satırında `imperative mood` kullanmak](#5-konu-satırında-imperative-mood-kullanmak)
+6.  [İçerik kısmında her satırı 72 karakter ile sınırlandırmak](#6-i̇çerik-kısmında-her-satırı-72-karakter-ile-sınırlandırmak)
+7.  [_Ne_, _neden_ ve _nasıl_ gibi soruları açıklama kısmında açıklamak](#7-ne-neden-ve-nasıl-gibi-soruları-açıklama-kısmında-açıklamak)
 
 Örnek olarak:
 ```

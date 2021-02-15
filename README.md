@@ -206,7 +206,7 @@ Date:   Fri Jan 01 00:00:00 1982 -0200
  and turns it back into a chess game.
 ```
 
-### 2. Limit the subject line to 50 characters
+### 2. Konu satırını 50 karakter ile sınırlayın
 50 karakter kesin bir sınır değildir, sadece bir kuraldır. Konu satırlarının bu uzunlukta tutulması, okunabilir olmalarını sağlar ve yazarı, neler olduğunu açıklamanın en kısa yolu hakkında bir an düşünmeye zorlar.
 
 > Eğer 50 karakterden az yazma konusunda zorlanıyorsanız, aynı anda çok fazla değişiklik yapıyor olabilirsiniz. Atomic `commit`'ler konusunda çaba göstermeniz gerekir.

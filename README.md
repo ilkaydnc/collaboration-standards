@@ -221,7 +221,7 @@ Ve 72 karakterden uzun olan konu satırlarını 3 nokta ile keser:
 Sonuç olarak, 50 karakter sınırı için çabalayın ama 72 karakter sınırını kesin olarak aşmamanız gerekir.
 
 ### 3. Konu satırına büyük harf ile başlamak
-Başlıktan da anlaşılacaği gibi gayet bir maddedir. Tüm konu satırlarına büyük harf kullanarak başlayın.
+Başlıktan da anlaşılacağı gibi gayet basit bir maddedir. Tüm konu satırlarına büyük harf kullanarak başlayın.
 
 Örnek olarak:
 - Accelerate to 88 miles per hour

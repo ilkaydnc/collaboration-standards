@@ -5,7 +5,7 @@
 ## İçindekiler
 
 1. [Git Flow Nedir? Nasıl Kullanılır?](https://github.com/ilkaydnc/collaboratio-standardization/blob/main/Git/git-flow.md)
-2. [İyi Bir Git Commit'i Nasıl Yazılır?](https://github.com/ilkaydnc/collaboratio-standardization/blob/main/Git/git-flow.md)
+2. [İyi Bir Git Commit'i Nasıl Yazılır?](https://github.com/ilkaydnc/collaboratio-standardization/blob/main/Git/git-commit.md)
 
 ## Kaynaklar
 
